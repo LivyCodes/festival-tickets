@@ -19,6 +19,27 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+    <script>
+      function toggleLoginForm() {
+        var loginForm = document.getElementById("login-form");
+        if (loginForm.style.display === "none") {
+          loginForm.style.display = "block";
+        } else {
+          loginForm.style.display = "none";
+        }
+      }
+
+       function toggleDropdown() {
+      var dropdown = document.getElementById('language-selector-dropdown');
+      dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function selectLanguage(lang) {
+      var toggleText = document.getElementById('language-selector-toggle-text');
+      toggleText.textContent = lang;
+      toggleDropdown();
+    }
+    </script>
 
     <title>ELEKTRIC EEL FESTIVAL</title>
   </head>
@@ -27,13 +48,27 @@
       <div class="row mt-4 nav">
         <div class="col">
           <h1>
-            ELEKTRIC <br />
+            ELEKTRIK <br />
             EEL FESTIVAL<br />
           </h1>
-          <p>Dive into a world of electric music</p>
+          <p class="p-custom">Dive into a world of electric music</p>
         </div>
         <div class="col user">
-          <span id="en">EN</span>
+           <div class="language-selector">
+    <div id="language-selector-toggle" class="language-selector-toggle" onclick="toggleDropdown()">
+      <span id="language-selector-toggle-text" class="language-selector-toggle-text">EN</span>
+      <span>&#9660;</span> <!-- Unicode down arrow symbol -->
+    </div>
+    <div id="language-selector-dropdown" class="language-selector-dropdown">
+      <ul>
+        <li onclick="selectLanguage('EN')">EN</li>
+        <li onclick="selectLanguage('FR')">FR</li>
+        <li onclick="selectLanguage('ES')">ES</li>
+      </ul>
+    </div>
+  </div>
+
+          </span>
 
           <img
             class="mt-1"
@@ -41,7 +76,28 @@
             alt="user image"
             width="40"
             height="40"
-          /><span id="user">USER</span>
+          /><span>
+            <a href="#" id="user" onclick="toggleLoginForm()">USER</a>
+
+            <div id="login-form" class="login-form">
+              <h2>User Login</h2>
+              <form action="/login" method="post">
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  required
+                />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+                <button type="submit">Login</button>
+              </form>
+            </div>
+          </span>
         </div>
       </div>
       <div class="icons">
@@ -84,7 +140,7 @@
         <div class="row mt-2 mb-2">
           <div class="col">
             <img
-              src="/images/about.png"
+              src="/images/headphones-removebg-preview.png"
               alt="user image"
               width="30"
               height="30"
@@ -126,8 +182,8 @@
             class="image-custom"
             src="/images/concert2.jpg"
             alt="sunflower image"
-            width="150"
-            height="75"
+            width="200"
+            height="100"
           />
           <p class="event">Event 1</p>
         </div>
@@ -136,8 +192,8 @@
             class="image-custom"
             src="/images/concert1.jpg"
             alt="sunflower image"
-            width="150"
-            height="75"
+            width="200"
+            height="100"
           />
           <p class="event">Event 2</p>
         </div>
@@ -146,8 +202,8 @@
             class="image-custom"
             src="/images/concert3.jpg"
             alt="sunflower image"
-            width="150"
-            height="75"
+            width="200"
+            height="100"
           />
           <p class="event">Event 3</p>
         </div>
@@ -156,8 +212,8 @@
             class="image-custom"
             src="/images/concert4.jpg"
             alt="sunflower image"
-            width="150"
-            height="75"
+            width="200"
+            height="100"
           />
           <p class="event">Event 4</p>
         </div>
